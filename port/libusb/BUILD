@@ -1,5 +1,12 @@
 load("//infrastructure/rules:cc_configured_library.bzl", "cc_configured_library")
 
+cc_library(
+    name = "btstack_config",
+    hdrs = ["btstack_config.h"],
+    includes = ["."],
+    visibility = ["//visibility:public"],
+)
+
 cc_configured_library(
     name = "bt_stack_configured",
     hdrs = ["btstack_config.h"],

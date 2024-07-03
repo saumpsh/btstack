@@ -23,3 +23,23 @@ cc_library(
   includes = [".", "ble", "classic", "le-audio", "mesh"],
   visibility = ["//visibility:public"],
 )
+
+
+## Less scablable approach. We directly include btstack config from projects.
+# For POSIX ports. btstack config for libusb port, but hci layer can also be changed to uart.
+cc_library(
+  name = "btstack",
+  srcs = glob(["*.c", "ble/gatt-service/*.c", "ble/*.c", "classic/*.c", "mesh/gatt-service/*.c", "le-audio/*.c", "le-audio/gatt-service/*.c", "mesh/*.c",]),
+  hdrs = glob(["*.h", "ble/gatt-service/*.h", "ble/*.h", "classic/*.h", "mesh/gatt-service/*.h", "le-audio/*.h", "le-audio/gatt-service/*.h", "mesh/*.h",]),
+  includes = [".", "ble", "classic", "le-audio", "mesh"],
+  deps = [
+    "//3rd-party/rijndael",
+    "//3rd-party/micro-ecc",
+    "//3rd-party/bluedroid",
+    "//3rd-party/md5",
+    "//3rd-party/yxml",
+    "//3rd-party/lc3-google",
+    "//port/libusb:btstack_config"
+  ],
+  visibility = ["//visibility:public"],
+)
