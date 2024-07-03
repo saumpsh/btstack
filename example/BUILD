@@ -22,3 +22,15 @@ cc_library(
   ],
   visibility = ["//visibility:public"],
 )
+
+cc_library(
+  name = "gatt_streamer_server",
+  srcs = ["gatt_streamer_server.c"],
+  hdrs = ["gatt_streamer_server.h"],
+  includes = ["."],
+  deps = [
+    "//port/libusb:btstack_config",
+    "//src:btstack",
+  ],
+  visibility = ["//visibility:public"],
+)

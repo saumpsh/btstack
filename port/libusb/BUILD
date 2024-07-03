@@ -33,7 +33,7 @@ cc_configured_library(
     name = "btstack_chipset_realtek_configured",
     hdrs = ["btstack_config.h"],
     includes = ["."],
-    unconfigured_dep = "//chipset/realtek:btstack_chipset_realtek",
+    unconfigured_dep = "//chipset/realtek:btstack_chipset_realtek_unconfigured",
     deps = ["bt_stack_posix_configured", "bt_stack_configured"],
 )
 
@@ -41,7 +41,7 @@ cc_configured_library(
     name = "btstack_chipset_zephyr_configured",
     hdrs = ["btstack_config.h"],
     includes = ["."],
-    unconfigured_dep = "//chipset/zephyr:btstack_chipset_zephyr",
+    unconfigured_dep = "//chipset/zephyr:btstack_chipset_zephyr_unconfigured",
     deps = ["bt_stack_posix_configured", "bt_stack_configured"],
 )
 
@@ -63,6 +63,20 @@ cc_binary(
     ":btstack_chipset_zephyr_configured",
     ":hci_transport_h2_libusb_configured",
     "//platform/embedded:hal_led"
+  ],
+  linkopts = ["-lusb-1.0"]
+)
+
+cc_binary(
+  name = "gatt_streamer_server_app",
+  srcs = ["main.c"],
+  deps = [
+    "//example:gatt_streamer_server",
+    "//chipset/realtek:btstack_chipset_realtek",
+    "//chipset/zephyr:btstack_chipset_zephyr",
+    "//platform/libusb:hci_transport_h2_libusb",
+    "//platform/embedded:hal_led",
+    "//platform/posix:btstack_posix",
   ],
   linkopts = ["-lusb-1.0"]
 )
