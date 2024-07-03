@@ -1,7 +1,7 @@
 load("//infrastructure/rules:cc_unconfigured_library.bzl", "cc_unconfigured_library")
 
 cc_unconfigured_library(
-  name = "btstack",
+  name = "btstack_unconfigured",
   srcs = glob(["*.c", "ble/gatt-service/*.c", "ble/*.c", "classic/*.c", "mesh/gatt-service/*.c", "le-audio/*.c", "le-audio/gatt-service/*.c", "mesh/*.c",]),
   hdrs = glob(["*.h", "ble/gatt-service/*.h", "ble/*.h", "classic/*.h", "mesh/gatt-service/*.h", "le-audio/*.h", "le-audio/gatt-service/*.h", "mesh/*.h",]),
   includes = [".", "ble", "classic", "le-audio", "mesh"],
