@@ -26,3 +26,6 @@ cmake-build-*
 build
 build-asan
 build-coverage
+bazel-*
+MODULE.bazel
+MODULE.bazel.lock
