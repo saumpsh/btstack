@@ -270,6 +270,8 @@ static int att_write_callback(hci_con_handle_t connection_handle, uint16_t att_h
         case ATT_CHARACTERISTIC_0000FF11_0000_1000_8000_00805F9B34FB_01_VALUE_HANDLE:
             printf("Write: transaction mode %u, offset %u, data (%u bytes): ", transaction_mode, offset, buffer_size);
             printf_hexdump(buffer, buffer_size);
+            buffer[buffer_size] = '\0';
+            printf("Payload received for write: %s\n", buffer);
             break;
         default:
             break;

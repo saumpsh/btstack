@@ -34,3 +34,14 @@ cc_library(
   ],
   visibility = ["//visibility:public"],
 )
+
+cc_library(
+  name = "le_streamer_client",
+  srcs = ["le_streamer_client.c"],
+  includes = ["."],
+  deps = [
+    "//port/libusb:btstack_config",
+    "//src:btstack",
+  ],
+  visibility = ["//visibility:public"],
+)

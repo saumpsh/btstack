@@ -80,3 +80,17 @@ cc_binary(
   ],
   linkopts = ["-lusb-1.0"]
 )
+
+cc_binary(
+  name = "gatt_streamer_client_app",
+  srcs = ["main.c"],
+  deps = [
+    "//example:le_streamer_client",
+    "//chipset/realtek:btstack_chipset_realtek",
+    "//chipset/zephyr:btstack_chipset_zephyr",
+    "//platform/libusb:hci_transport_h2_libusb",
+    "//platform/embedded:hal_led",
+    "//platform/posix:btstack_posix",
+  ],
+  linkopts = ["-lusb-1.0"]
+)
